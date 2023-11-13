@@ -1,0 +1,116 @@
+﻿﻿@model IEnumerable<WebApplication1.Models.CartModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div>
+    Trang chủ
+</div>
+<div>
+    Cart
+</div>
+<h2>Giỏ Hàng</h2>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#removecart").click(function () {
+            var model = {};
+            //lấy id sản phẩm
+            model.Id = $("#productid").val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Remove", "Cart")',
+                data:  JSON.stringify(model) ,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    $('#CartCount').text(@Session["count"] - 1);
+                    $("#product-" + model.Id).remove();
+                },
+                error: function () {
+                    alert("Lỗi trong khi thêm vào giỏ hàng!");
+                }
+            });
+            return false;
+        });
+    });
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <h4 style="padding-top: 14px"> <b>Thông tin giỏ hàng</b> </h4>
+            <hr>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th class="text-center">Đơn giá</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr id="product-@item.Product.id">
+                                <td class="col-md-5">
+                                    <div class="media">
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object" src="~/Controllers/images/@item.Product.avatar"
+                                                 style="width: 100px; height: 80px;">
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading cart-text-padding-top"><a href="#">@item.Product.name</a></h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-md-1" style="text-align: center">
+                                    <input type="text" value="@item.Quantity"
+                                </td>
+                                <td class="col-md-1 text-center" id="price"><p class="cart-text-padding-top"><b>@item.Product.price </b></p></td>
+
+
+                                <td class="col-md-1 text-center">
+                                    <input type="hidden" value="@item.Product.id" id="productid" />
+
+                                    <button type="button" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-remove" id="removecart">Xóa</span>
+                                    </button>
+                                </td>
+
+
+
+                            </tr>
+
+                        }
+                    }
+                    else
+                    {
+                        <p>Không có sản phẩm trong giỏ hàng</p>
+                    }
+
+
+
+
+                </tbody>
+            </table>
+
+
+            <div id="button" align="right">
+                <button class="btn btn-1" disabled="disabled">
+                    <a href="@Url.Action("Index", "Home")" class="btn btn-1"> < Tiếp tục mua sắm</a>
+                </button>
+                <button class="btn btn-2">
+                    <a href="@Url.Action("Index", "Payment")" class="btn btn-2">Thanh Toán ></a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

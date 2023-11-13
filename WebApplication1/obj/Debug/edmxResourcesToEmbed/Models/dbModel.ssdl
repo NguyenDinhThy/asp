@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BANPCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BANPC.dbo.product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="avatar" Type="nvarchar" MaxLength="100" />
+    <Property Name="price" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="BANPCModelStoreContainer">
+    <EntitySet Name="product" EntityType="Self.product" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [product].[id] AS [id], 
+    [product].[name] AS [name], 
+    [product].[avatar] AS [avatar], 
+    [product].[price] AS [price]
+    FROM [dbo].[product] AS [product]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

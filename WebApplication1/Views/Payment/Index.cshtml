@@ -1,0 +1,51 @@
+﻿﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="all">
+    <div class="container">
+        <div class="form">
+            <div class="info">
+
+
+                <h1 class="pay-done__head reddish">Thanh toán thành công!</h1>
+                <div class="pay-done__icon"> <i class="fa fa-check reddish"></i></div>
+                <p class="pay-done__thank">Thanh toán đã thực hiện thành công. Trong vòng 30 giây Shop sẽ liên hệ xác nhận thông tin giao hàng cho quý khách.</p>
+                <ul class="pay-done__info">
+                    <li class="pay-done__info__row">
+                        <p class="pay-done__info__row__name">Hình thức thanh toán </p>
+                        <p class="pay-done__info__row__detail">Chuyển khoản</p>
+                    </li>
+                    <li class="pay-done__info__row">
+                        <p class="pay-done__info__row__name">Địa chỉ nhận hàng </p>
+                        <p class="pay-done__info__row__detail">Sao Hoả</p>
+                    </li>
+                    <li class="pay-done__info__row">
+                        <p class="pay-done__info__row__name"> Số điện thoại </p>
+                        <p class="pay-done__info__row__detail">113</p>
+                    <li class="pay-done__info__row">
+                        <p class="pay-done__info__row__name"> Mã giao dịch </p>
+                        <p class="pay-done__info__row__detail">99999999</p>
+                    </li>
+                </ul>
+
+
+                <p>Mọi thắc mắc, hỗ trợ vui lòng gọi  <span class="pay-done__num">113</span> hoặc <span class="pay-done__num"><a href="https://www.facebook.com/NDT.12032002">fb</a> </span> (7h30 - 22h). Cám ơn quý khách đã cho Shop cơ hội phục vụ!</p>
+
+
+
+                <div class="pay-done__button">
+                    <button class="btn btn-1">
+                        <a href="@Url.Action("Index", "Home")" class="btn btn-1"> < Tiếp tục mua sắm</a>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

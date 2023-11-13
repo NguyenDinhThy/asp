@@ -1,0 +1,384 @@
+﻿@model WebApplication1.Models.HomeModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="hero-slide owl-carousel site-blocks-cover">
+    <div class="intro-section" style="background-image: url('~/Controllers/images/course_1.jpg');">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
+                    <h1>BẠN MUỐN MÁY TÍNH GIÁ RẺ ?</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="intro-section" style="background-image: url('~/Controllers/images/pcourse_4.jpg');">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
+                    <h1>BẠN MUỐN MÁY TÍNH CHẤT LƯỢNG!</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div></div>
+
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5 justify-content-center text-center">
+            <div class="col-lg-4 mb-5">
+                <h2 class="section-title-underline mb-5">
+                    <span>SẢN PHẨM CHÍNH HÃNG</span>
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            
+                @foreach (var item in Model.ListCategory)
+                {
+                    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+
+                        <div class="feature-1 border">
+                           
+                            <div class="feature-1-content">
+                                <h2>@item.Name</h2>
+                                <p>@item.Slug</p>
+                                <p>
+                                    @Html.ActionLink(item.Name, "ProductCategory", "Category", new { @Id = item.Id }, null)
+                                </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+<div class="site-section">
+    <div class="container">
+
+
+        <div class="row mb-5 justify-content-center text-center">
+            <div class="col-lg-6 mb-5">
+                <h2 class="section-title-underline mb-3">
+                    <span>Sản Phẩm Nổi Bật</span>
+                </h2>
+                <p>Thiết bị công nghệ tân tiến nhất vũ trụ</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="owl-slide-3 owl-carousel">
+                    @foreach (var item in Model.ListProducts)
+                    {
+
+                        <div class="course-1-item">
+                            <figure class="thumnail">
+                                <a href="@Url.Action("Detail","Product", new { Id = item.id})"><img src="~/Controllers/images/@item.avatar" alt="Image" class="img-fluid"></a>
+                                <div class="price">@item.price VNĐ</div>
+                                <div class="category">
+                                    @Html.ActionLink(item.name, "Detail", "Product", new { Id = item.id }, null)
+
+                                
+                                </div>
+                            </figure>
+                            <div class="course-1-content pb-4">
+                                <h2>Chỉ Có Tại Thy Buôn PC</h2>
+                                <div class="rating text-center mb-3">
+                                    <span class="icon-star2 text-warning"></span>
+                                    <span class="icon-star2 text-warning"></span>
+                                    <span class="icon-star2 text-warning"></span>
+                                    <span class="icon-star2 text-warning"></span>
+                                    <span class="icon-star2 text-warning"></span>
+                                </div>
+                                <p class="desc mb-4">Chất lượng được Tổng Thống các nước Châu Âu và Châu Mỹ kiểm  định và đảm bảo, giá tốt nhất thế  giới hiện tại.</p>
+                                <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">Mua ngay bây giờ!</a></p>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+
+<div class="section-bg style-1" style="background-image: url('~/Controllers/images/about_1.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h2 class="section-title-underline style-2">
+                    <span>Tại Sao Nên Mua  Máy Tính Ở Đây !</span>
+                </h2>
+            </div>
+            <div class="col-lg-8">
+                <p class="lead">ĐẦU TIÊN LÀ CHỦ CỬA HÀNG ĐẸP TRAI, THỨ 2 LÀ GIÁ CẢ TỐT NHẤT VŨ TRỤ, THỨ 3: CHẤT LƯỢNG ĐẢM BẢO.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus assumenda omnis tempora ullam alias amet eveniet voluptas, incidunt quasi aut officiis porro ad, expedita saepe necessitatibus rem debitis architecto dolore? Nam omnis sapiente placeat blanditiis voluptas dignissimos, itaque fugit a laudantium adipisci dolorem enim ipsum cum molestias? Quod quae molestias modi fugiat quisquam. Eligendi recusandae officiis debitis quas beatae aliquam?</p>
+                <p><a href="#">Read more</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- // 05 - Block -->
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-4">
+                <h2 class="section-title-underline">
+                    <span>KHÁCH HÀNG TIÊU BIỂU !</span>
+                </h2>
+            </div>
+        </div>
+
+
+        <div class="owl-slide owl-carousel">
+
+            <div class="ftco-testimonial-1">
+                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                    <img src="~/Controllers/images/person_1.jpg" alt="Image" class="img-fluid mr-3">
+                    <div>
+                        <h3>Thomas Wayne</h3>
+                        <span>Bố của Batman</span>
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        &ldquo;Con trai tôi đòi hỏi một chiếc máy tính mạnh mẽ để thực hiện các nhiệm vụ siêu anh hùng. Tôi đã mua cho con trai mình một chiếc máy tính với hiệu suất siêu cao, đủ để đối phó với mọi tình huống. Batman rất phấn khích khi nhận được nó và đã bắt đầu thử nghiệm máy tính với mọi nhiệm vụ từ theo dõi tội phạm đến giải mã mật mã. Tôi rất an tâm biết rằng anh ấy có một công cụ mạnh mẽ để bảo vệ Gotham.&rdquo;
+                    </p>
+                </div>
+            </div>
+
+            <div class="ftco-testimonial-1">
+                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                    <img src="~/Controllers/images/thayphat.jpg" alt="Image" class="img-fluid mr-3">
+                    <div>
+                        <h3>Thầy Phát</h3>
+                        <span>Giảng Viên HITU</span>
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        &rdquo;Sản phẩm tại ThyPC không thể chê. Máy tính mới của tôi mạnh mẽ và ổn định, nhưng tôi vẫn chưa thể nào dùng hết mọi chức năng và sức mạnh của nó.
+                        Là một giảng viên khoa Công Nghệ Thông Tin, tôi muốn nói rằng máy tính từ ThyPC đã giúp tôi trải nghiệm những khía cạnh mới mẻ và thú vị về công nghệ. Hãy cân nhắc ghé qua ThyPC nếu bạn muốn học hỏi và vui vẻ cùng máy tính! Chúc mọi người học tốt và chơi vui!"&rdquo;
+                    </p>
+                </div>
+            </div>
+
+            <div class="ftco-testimonial-1">
+                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                    <img src="~/Controllers/images/j97.jpg" alt="Image" class="img-fluid mr-3">
+                    <div>
+                        <h3>Jack 5 củ</h3>
+                        <span>Ca Sỹ Bỏ Con</span>
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        &ldquo;Dịch vụ tại đây 'không những chuyên nghiệp, mà còn đủ 5 triệu chất lượng.
+                        Sản phẩm cực kỳ ổn định, và tôi sẽ kể cho bạn một câu chuyện. Tôi đã phải bỏ con, bỏ vợ để tích luỹ đủ tiền mua chiếc máy tính này. Nhưng lúc tôi bước vào cửa hàng ThyPC, tôi đã gặp Messi đang đứng ở đó! Đúng, Messi! Anh ấy cũng đang mua máy tính tại đây. Đó là thời điểm đáng nhớ nhất trong cuộc đời tôi.
+                        Tôi gọi chiếc máy tính của mình là 'Jack 5 PC'. Cảm ơn ThyPC đã giúp tôi thực hiện ước mơ mà không tốn 60 tỷ. Đừng ngần ngại, hãy đến ThyPC để mua 1 chiếc PC siêu mạnh mà giá chỉ có 5 củ"&rdquo;
+                    </p>
+                </div>
+            </div>
+
+            <div class="ftco-testimonial-1">
+                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                    <img src="~/Controllers/images/stmtp.jpg" alt="Image" class="img-fluid mr-3">
+                    <div>
+                        <h3>Sơn Tùng M-TP</h3>
+                        <span>Ca Sỹ Pro Vjp</span>
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        &ldquo;
+                        Hôm nay tôi muốn chia sẻ với các bạn về trải nghiệm của mình tại cửa hàng máy tính ThyPC. Đầu tiên, dịch vụ tại đây đáng khen đến nỗi khi tôi vào cửa hàng, họ đã bắt đầu hát 'Chắc Ai Đó Sẽ Về'! Tôi đã nghĩ rằng tôi bước vào phòng thu.
+                        Sản phẩm của ThyPC thì đỉnh, máy tính của tôi mạnh mẽ và phong cách đến mức khiến tôi nghĩ rằng nó có thể hát và nhảy như tôi. Tôi đã đặt biệt danh cho nó là 'Sơn Tùng PC' và thậm chí đã sáng tác cho nó một bản hit.
+                        Thật tuyệt nếu tôi và ThyPC có thể hợp tác quảng cáo!. Tôi có ý tưởng slogan: 'Sử dụng ThyPC, nếu bạn là Fan M-TP !&rdquo;
+                    </p>
+                </div>
+            </div>
+
+            <div class="ftco-testimonial-1">
+                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                    <img src="~/Controllers/images/tcry.jpg" alt="Image" class="img-fluid mr-3">
+                    <div>
+                        <h3>Thành Cry</h3>
+                        <span>Chiến Thần Nước Mắt</span>
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        &ldquo;Hôm nay tôi muốn kể cho các bạn về trải nghiệm tại cửa hàng máy tính ThyPC. Đầu tiên, dịch vụ tại đây, thật là... tuyệt vời. Máy tính mới của tôi mạnh mẽ, nhanh chóng, và đẹp đẽ đến mức khiến tôi khóc như mưa khi bật lên lần đầu. Tôi không thể ngừng rơi nước mắt trước cái đẹp của nó!
+ Trải nghiệm với ThyPC đã làm tôi cảm động. Tôi thực sự tin rằng máy tính có linh hồn và họ đã đưa một linh hồn tuyệt vời đến với tôi. Chắc chắn rằng tôi khóc rất nhiều vì không biết đến ThyPC sớm hơn.&rdquo;
+                    </p>
+                </div>
+            </div>
+
+            <div class="ftco-testimonial-1">
+                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                    <img src="~/Controllers/images/nnht.jpg" alt="Image" class="img-fluid mr-3">
+                    <div>
+                        <h3>z#$%%f</h3>
+                        <span>Tổng Thống Sao Hoả</span>
+                    </div>
+                </div>
+                <div>
+                    <p>&rdquo;Trải nghiệm mua sắm xuất sắc! Dịch vụ tận tâm, sản phẩm tuyệt vời, và giao hàng nhanh chóng. Hài lòng tuyệt đối với cửa hàng này. Điều này khiến tôi cảm thấy như đang ở Sao Hoả, đặt hàng hôm 20 mà qua 23 đã nhận được hàng, công nghệ Trái Đất đã phát triển rất nhiều, giờ đây mỗi tối tôi có thể đánh liên quân với các anh em Trái Đất một cách đơn giản mượt mà hơn rồi, chưa kể chủ cửa hàng tốt bụng đến độ Buil PC được tặng điện thoại. Người trái đất thật hào phóng !&rdquo;</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="section-bg style-1" style="background-image: url('~/Controllers/images/hero_1.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+                <span class="icon flaticon-mortarboard"></span>
+                <h3>ThyPC01</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea? Dolore, amet reprehenderit.</p>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+                <span class="icon flaticon-school-material"></span>
+                <h3>ThyPC02</h3>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
+                    Dolore, amet reprehenderit.
+                </p>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+                <span class="icon flaticon-library"></span>
+                <h3>ThyPC03</h3>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
+                    Dolore, amet reprehenderit.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="news-updates">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="section-heading">
+                    <h2 class="text-black">THÔNG TIN &amp; KHUYẾN MÃI</h2>
+                    <a href="#">Đọc Thêm Tin Hot</a>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="post-entry-big">
+                            <a href="news-single.html" class="img-link"><img src="~/Controllers/images/dnt.jpg" alt="Image" class="img-fluid"></a>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <a href="#">June 10, 2023</a>
+                                    <span class="mx-1">/</span>
+                                    <a href="#">VTV24</a>, <a href="#">Updates</a>
+                                </div>
+                                <h3 class="post-heading"><a href="news-single.html">Cựu Tổng Thống Hoa Kỳ Donald Trump Kêu Gọi Người Mỹ Mua PC Tại ThyPC</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="post-entry-big horizontal d-flex mb-4">
+                            <a href="news-single.html" class="img-link mr-4"><img src="~/Controllers/images/pnv.jpg" alt="Image" class="img-fluid"></a>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <a href="#">June 9, 2023</a>
+                                    <span class="mx-1">/</span>
+                                    <a href="#">VTV24</a>, <a href="#">Updates</a>
+                                </div>
+                                <h3 class="post-heading"><a href="news-single.html">Ông Phạm Nhật Vượng Đặt 900000 Bộ Pc Cao Cấp Tại ThyPC !</a></h3>
+                            </div>
+                        </div>
+
+                        <div class="post-entry-big horizontal d-flex mb-4">
+                            <a href="news-single.html" class="img-link mr-4"><img src="~/Controllers/images/putin.jpg" alt="Image" class="img-fluid"></a>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <a href="#">June 8, 2023</a>
+                                    <span class="mx-1">/</span>
+                                    <a href="#">VTV24</a>, <a href="#">Updates</a>
+                                </div>
+                                <h3 class="post-heading"><a href="news-single.html">Tổng Thống Vladimir Putin Đề Nghị Xuất Khẩu PC Sang Nga Cho Người Dân Ukraina</a></h3>
+                            </div>
+                        </div>
+
+                        <div class="post-entry-big horizontal d-flex mb-4">
+                            <a href="news-single.html" class="img-link mr-4"><img src="~/Controllers/images/tqpc.jpg" alt="Image" class="img-fluid"></a>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <a href="#">June 7, 2023</a>
+                                    <span class="mx-1">/</span>
+                                    <a href="#">VTV24</a>, <a href="#">Updates</a>
+                                </div>
+                                <h3 class="post-heading"><a href="news-single.html">Thị Trường Máy Tính Trung Quốc Gần Sụp Đổ Vì ThyPC Bán Quá Rẻ ?</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="section-heading">
+                    <h2 class="text-black">ThyPC Videos</h2>
+                    <a href="#">Xem Video Về Chúng Tôi</a>
+                </div>
+                <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
+                    <span class="play">
+                        <span class="icon-play"></span>
+                    </span>
+                    <img src="~/Controllers/images/course_5.jpg" alt="Image" class="img-fluid">
+                </a>
+                <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
+                    <span class="play">
+                        <span class="icon-play"></span>
+                    </span>
+                    <img src="~/Controllers/images/course_5.jpg" alt="Image" class="img-fluid">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section ftco-subscribe-1" style="background-image: url('~/Controllers/images/bg_1.jpg')">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <h2>ĐẶT TRƯỚC SẢN PHẨM SẮP RA MẮT</h2>
+                <p>Khi Có Hàng Về Sẽ Được Giảm Giá Và Kèm Nhiều Ưu Đãi Chỉ Có Tại ThyPC</p>
+            </div>
+            <div class="col-lg-5">
+                <form action="" class="d-flex">
+                    <input type="text" class="rounded form-control mr-2 py-3" placeholder="Email Của Bạn">
+                    <button class="btn btn-primary rounded py-3 px-4" type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 

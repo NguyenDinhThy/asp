@@ -1,0 +1,38 @@
+﻿﻿@model List<WebApplication1.Context.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="custom-breadcrumns border-bottom">
+    <div class="container">
+       
+
+        <span class="mx-3 icon-keyboard_arrow_right"></span>
+        <span class="current">Category</span>
+    </div>
+</div>
+
+<section class="section-content padding-y" style="margin-top:100px">
+    <div class="container">
+        <nav class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 product" style="margin-bottom:30px">
+                    <div class="card">
+                        <div class="img-wrap" style="background: #ffd7d7">
+                            <a href="@Url.Action("ProductCategory", "Category", new { id = item.Id })">
+                                <img style="width:253px; height:300px" src="~/Controllers/images/@item.Avatar">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title"><a href="#">@item.Name</a></h4>
+                        </div>
+                    </div>
+                </div>
+            }
+        </nav>
+    </div>
+</section>

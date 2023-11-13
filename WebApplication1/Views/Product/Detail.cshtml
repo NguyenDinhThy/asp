@@ -1,0 +1,89 @@
+﻿﻿@model WebApplication1.Context.Product
+
+
+
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#addtocart").click(function () {
+            var model = {};
+            //lấy id sản phẩm
+            model.Id = @Model.id;
+            // lấy số lượng đặt hàng
+            model.Quantity = $("#ipQuantity").val();
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddToCart", "Cart")',
+                data:  JSON.stringify(model) ,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    alert("Thêm giỏ hàng thành công!")
+                    $('#CartCount').text(@Session["count"] + 1);
+                },
+                error: function () {
+                    alert("Lỗi trong khi thêm vào giỏ hàng!");
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
+<div class="custom-breadcrumns border-bottom">
+    <div class="container">
+        <a href="index.html">Home</a>
+        <span class="mx-3 icon-keyboard_arrow_right"></span>
+        <a href="courses.html">Courses</a>
+        <span class="mx-3 icon-keyboard_arrow_right"></span>
+        <span class="current">Courses</span>
+    </div>
+</div>
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <p>
+                    <img src="~/Controllers/images/@Model.avatar" alt="Image" class="img-fluid">
+                </p>
+            </div>
+            <div class="col-lg-5 ml-auto align-self-center">
+                <h2 class="section-title-underline mb-5">
+                    <span>@Model.name</span>
+                </h2>
+
+                <p><strong class="text-black d-block">Giá: </strong> @Model.price VNĐ</p>
+
+                <p>@Model.mota</p>
+
+
+
+                <div class="form-row  mt-4">
+                    <div class="form-group col-md flex-grow-1">
+                        <div class="input-group mb-3 input-spinner">
+                            <input type="text" id="ipQuantity" class="form-control" value="1">
+                        </div>
+                    </div> <!-- col.// -->
+                    <div class="form-group col-md">
+                        <a href="#" id="addtocart" class="btn  btn-primary">
+                            <i class="fas fa-shopping-cart"></i>
+
+                            <span class="text" h>Thêm vào giỏ hàng</span>
+                        </a>
+                    </div> <!-- col.// -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
